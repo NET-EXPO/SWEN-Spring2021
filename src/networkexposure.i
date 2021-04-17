@@ -1,10 +1,11 @@
-%module affiliationexposure
+%module networkexposure
 
+%include typemaps.i
 %{
-#include "affiliationexposure.h"
+#include "networkexposure.h"
 %}
 
-%include "affiliationexposure.h"
+%include "networkexposure.h"
 
 %include cpointer.i
 %pointer_functions(int, intp);
@@ -21,11 +22,5 @@ double* *double_array(int rows, int cols) {
 
 void *setitem(double **array, int row, int col, int value) {
     array[row][col] = value;
- }
-
-int* int_array(int size) {
-    int *first_mode_array = (int*)calloc(size, sizeof(int));
-    return first_mode_array;
- }
-
+    }
 %}

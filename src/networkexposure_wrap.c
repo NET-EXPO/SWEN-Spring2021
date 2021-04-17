@@ -208,7 +208,7 @@ static void SWIGUNUSED SWIG_JavaThrowException(JNIEnv *jenv, SWIG_JavaExceptionC
 #define SWIG_contract_assert(nullreturn, expr, msg) if (!(expr)) {SWIG_JavaThrowException(jenv, SWIG_JavaIllegalArgumentException, msg); return nullreturn; } else
 
 
-#include "affiliationexposure.h"
+#include "networkexposure.h"
 
 
 static int *new_intp() { 
@@ -245,145 +245,33 @@ double* *double_array(int rows, int cols) {
 
 void *setitem(double **array, int row, int col, int value) {
     array[row][col] = value;
- }
-
-int* int_array(int size) {
-    int *first_mode_array = (int*)calloc(size, sizeof(int));
-    return first_mode_array;
- }
-
+    }
 
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-SWIGEXPORT void JNICALL Java_affiliationexposureJNI_ModeInfo_1first_1mode_1indices_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
-  struct ModeInfo *arg1 = (struct ModeInfo *) 0 ;
-  int arg2 ;
+SWIGEXPORT void JNICALL Java_networkexposureJNI_calc_1network_1exposure(JNIEnv *jenv, jclass jcls, jlong jarg1, jlong jarg2, jlong jarg3, jint jarg4) {
+  double **arg1 = (double **) 0 ;
+  double **arg2 = (double **) 0 ;
+  double **arg3 = (double **) 0 ;
+  int arg4 ;
   
   (void)jenv;
   (void)jcls;
-  (void)jarg1_;
-  arg1 = *(struct ModeInfo **)&jarg1; 
-  arg2 = (int)jarg2; 
-  if (arg1) (arg1)->first_mode_indices = arg2;
+  arg1 = *(double ***)&jarg1; 
+  arg2 = *(double ***)&jarg2; 
+  arg3 = *(double ***)&jarg3; 
+  arg4 = (int)jarg4; 
+  calc_network_exposure(arg1,arg2,arg3,arg4);
 }
 
 
-SWIGEXPORT jint JNICALL Java_affiliationexposureJNI_ModeInfo_1first_1mode_1indices_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
-  jint jresult = 0 ;
-  struct ModeInfo *arg1 = (struct ModeInfo *) 0 ;
-  int result;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(struct ModeInfo **)&jarg1; 
-  result = (int) ((arg1)->first_mode_indices);
-  jresult = (jint)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void JNICALL Java_affiliationexposureJNI_ModeInfo_1second_1mode_1indices_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
-  struct ModeInfo *arg1 = (struct ModeInfo *) 0 ;
-  int arg2 ;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(struct ModeInfo **)&jarg1; 
-  arg2 = (int)jarg2; 
-  if (arg1) (arg1)->second_mode_indices = arg2;
-}
-
-
-SWIGEXPORT jint JNICALL Java_affiliationexposureJNI_ModeInfo_1second_1mode_1indices_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
-  jint jresult = 0 ;
-  struct ModeInfo *arg1 = (struct ModeInfo *) 0 ;
-  int result;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(struct ModeInfo **)&jarg1; 
-  result = (int) ((arg1)->second_mode_indices);
-  jresult = (jint)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void JNICALL Java_affiliationexposureJNI_ModeInfo_1first_1mode_1flag_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
-  struct ModeInfo *arg1 = (struct ModeInfo *) 0 ;
-  char *arg2 = (char *) 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(struct ModeInfo **)&jarg1; 
-  arg2 = 0;
-  if (jarg2) {
-    arg2 = (char *)(*jenv)->GetStringUTFChars(jenv, jarg2, 0);
-    if (!arg2) return ;
-  }
-  {
-    free(arg1->first_mode_flag);
-    if (arg2) {
-      arg1->first_mode_flag = (char *) malloc(strlen((const char *)arg2)+1);
-      strcpy((char *)arg1->first_mode_flag, (const char *)arg2);
-    } else {
-      arg1->first_mode_flag = 0;
-    }
-  }
-  if (arg2) (*jenv)->ReleaseStringUTFChars(jenv, jarg2, (const char *)arg2);
-}
-
-
-SWIGEXPORT jstring JNICALL Java_affiliationexposureJNI_ModeInfo_1first_1mode_1flag_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
-  jstring jresult = 0 ;
-  struct ModeInfo *arg1 = (struct ModeInfo *) 0 ;
-  char *result = 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(struct ModeInfo **)&jarg1; 
-  result = (char *) ((arg1)->first_mode_flag);
-  if (result) jresult = (*jenv)->NewStringUTF(jenv, (const char *)result);
-  return jresult;
-}
-
-
-SWIGEXPORT jlong JNICALL Java_affiliationexposureJNI_new_1ModeInfo(JNIEnv *jenv, jclass jcls) {
-  jlong jresult = 0 ;
-  struct ModeInfo *result = 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  result = (struct ModeInfo *)calloc(1, sizeof(struct ModeInfo));
-  *(struct ModeInfo **)&jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void JNICALL Java_affiliationexposureJNI_delete_1ModeInfo(JNIEnv *jenv, jclass jcls, jlong jarg1) {
-  struct ModeInfo *arg1 = (struct ModeInfo *) 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  arg1 = *(struct ModeInfo **)&jarg1; 
-  free((char *) arg1);
-}
-
-
-SWIGEXPORT void JNICALL Java_affiliationexposureJNI_read_1y_1mode_1file(JNIEnv *jenv, jclass jcls, jstring jarg1, jlong jarg2, jlong jarg3, jlong jarg4, jboolean jarg5, jstring jarg6) {
+SWIGEXPORT void JNICALL Java_networkexposureJNI_read_1net_1file(JNIEnv *jenv, jclass jcls, jstring jarg1, jlong jarg2, jboolean jarg3) {
   char *arg1 = (char *) 0 ;
   double **arg2 = (double **) 0 ;
-  int *arg3 = (int *) 0 ;
-  int *arg4 = (int *) 0 ;
-  bool arg5 ;
-  char *arg6 = (char *) 0 ;
+  bool arg3 ;
   
   (void)jenv;
   (void)jcls;
@@ -393,150 +281,79 @@ SWIGEXPORT void JNICALL Java_affiliationexposureJNI_read_1y_1mode_1file(JNIEnv *
     if (!arg1) return ;
   }
   arg2 = *(double ***)&jarg2; 
-  arg3 = *(int **)&jarg3; 
-  arg4 = *(int **)&jarg4; 
-  arg5 = jarg5 ? true : false; 
-  arg6 = 0;
-  if (jarg6) {
-    arg6 = (char *)(*jenv)->GetStringUTFChars(jenv, jarg6, 0);
-    if (!arg6) return ;
-  }
-  read_y_mode_file(arg1,arg2,arg3,arg4,arg5,arg6);
+  arg3 = jarg3 ? true : false; 
+  read_net_file(arg1,arg2,arg3);
   if (arg1) (*jenv)->ReleaseStringUTFChars(jenv, jarg1, (const char *)arg1);
-  if (arg6) (*jenv)->ReleaseStringUTFChars(jenv, jarg6, (const char *)arg6);
 }
 
 
-SWIGEXPORT void JNICALL Java_affiliationexposureJNI_init_1a_1matrix(JNIEnv *jenv, jclass jcls, jlong jarg1, jlong jarg2, jobject jarg2_) {
-  double **arg1 = (double **) 0 ;
-  struct ModeInfo *arg2 = (struct ModeInfo *) 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg2_;
-  arg1 = *(double ***)&jarg1; 
-  arg2 = *(struct ModeInfo **)&jarg2; 
-  init_a_matrix(arg1,arg2);
-}
-
-
-SWIGEXPORT void JNICALL Java_affiliationexposureJNI_setup_1mode_1data(JNIEnv *jenv, jclass jcls, jstring jarg1, jboolean jarg2, jlong jarg3, jobject jarg3_) {
+SWIGEXPORT jint JNICALL Java_networkexposureJNI_getDimension(JNIEnv *jenv, jclass jcls, jstring jarg1, jboolean jarg2) {
+  jint jresult = 0 ;
   char *arg1 = (char *) 0 ;
   bool arg2 ;
-  struct ModeInfo *arg3 = (struct ModeInfo *) 0 ;
+  int result;
   
   (void)jenv;
   (void)jcls;
-  (void)jarg3_;
-  arg1 = 0;
-  if (jarg1) {
-    arg1 = (char *)(*jenv)->GetStringUTFChars(jenv, jarg1, 0);
-    if (!arg1) return ;
-  }
-  arg2 = jarg2 ? true : false; 
-  arg3 = *(struct ModeInfo **)&jarg3; 
-  setup_mode_data(arg1,arg2,arg3);
-  if (arg1) (*jenv)->ReleaseStringUTFChars(jenv, jarg1, (const char *)arg1);
-}
-
-
-SWIGEXPORT jlong JNICALL Java_affiliationexposureJNI_generateAMatrix(JNIEnv *jenv, jclass jcls, jstring jarg1, jlong jarg2, jlong jarg3, jboolean jarg4, jlong jarg5, jobject jarg5_) {
-  jlong jresult = 0 ;
-  char *arg1 = (char *) 0 ;
-  int *arg2 = (int *) 0 ;
-  int *arg3 = (int *) 0 ;
-  bool arg4 ;
-  struct ModeInfo *arg5 = (struct ModeInfo *) 0 ;
-  double **result = 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg5_;
   arg1 = 0;
   if (jarg1) {
     arg1 = (char *)(*jenv)->GetStringUTFChars(jenv, jarg1, 0);
     if (!arg1) return 0;
   }
-  arg2 = *(int **)&jarg2; 
-  arg3 = *(int **)&jarg3; 
-  arg4 = jarg4 ? true : false; 
-  arg5 = *(struct ModeInfo **)&jarg5; 
-  result = (double **)generateAMatrix(arg1,arg2,arg3,arg4,arg5);
-  *(double ***)&jresult = result; 
+  arg2 = jarg2 ? true : false; 
+  result = (int)getDimension(arg1,arg2);
+  jresult = (jint)result; 
   if (arg1) (*jenv)->ReleaseStringUTFChars(jenv, jarg1, (const char *)arg1);
   return jresult;
 }
 
 
-SWIGEXPORT jlong JNICALL Java_affiliationexposureJNI_generateAPrimeMatrix(JNIEnv *jenv, jclass jcls, jlong jarg1, jlong jarg2, jobject jarg2_) {
-  jlong jresult = 0 ;
-  double **arg1 = (double **) 0 ;
-  struct ModeInfo *arg2 = (struct ModeInfo *) 0 ;
-  double **result = 0 ;
+SWIGEXPORT void JNICALL Java_networkexposureJNI_read_1y_1file(JNIEnv *jenv, jclass jcls, jstring jarg1, jlong jarg2, jboolean jarg3) {
+  char *arg1 = (char *) 0 ;
+  double **arg2 = (double **) 0 ;
+  bool arg3 ;
   
   (void)jenv;
   (void)jcls;
-  (void)jarg2_;
-  arg1 = *(double ***)&jarg1; 
-  arg2 = *(struct ModeInfo **)&jarg2; 
-  result = (double **)generateAPrimeMatrix(arg1,arg2);
-  *(double ***)&jresult = result; 
-  return jresult;
+  arg1 = 0;
+  if (jarg1) {
+    arg1 = (char *)(*jenv)->GetStringUTFChars(jenv, jarg1, 0);
+    if (!arg1) return ;
+  }
+  arg2 = *(double ***)&jarg2; 
+  arg3 = jarg3 ? true : false; 
+  read_y_file(arg1,arg2,arg3);
+  if (arg1) (*jenv)->ReleaseStringUTFChars(jenv, jarg1, (const char *)arg1);
 }
 
 
-SWIGEXPORT jlong JNICALL Java_affiliationexposureJNI_transposeAMatrix(JNIEnv *jenv, jclass jcls, jlong jarg1, jlong jarg2, jlong jarg3, jobject jarg3_) {
-  jlong jresult = 0 ;
+SWIGEXPORT void JNICALL Java_networkexposureJNI_init_1w_1matrix(JNIEnv *jenv, jclass jcls, jlong jarg1, jlong jarg2) {
+  double **arg1 = (double **) 0 ;
+  int *arg2 = (int *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(double ***)&jarg1; 
+  arg2 = *(int **)&jarg2; 
+  init_w_matrix(arg1,arg2);
+}
+
+
+SWIGEXPORT void JNICALL Java_networkexposureJNI_print_1net_1exposure_1values(JNIEnv *jenv, jclass jcls, jlong jarg1, jlong jarg2, jint jarg3) {
   double **arg1 = (double **) 0 ;
   double **arg2 = (double **) 0 ;
-  struct ModeInfo *arg3 = (struct ModeInfo *) 0 ;
-  double **result = 0 ;
+  int arg3 ;
   
   (void)jenv;
   (void)jcls;
-  (void)jarg3_;
   arg1 = *(double ***)&jarg1; 
   arg2 = *(double ***)&jarg2; 
-  arg3 = *(struct ModeInfo **)&jarg3; 
-  result = (double **)transposeAMatrix(arg1,arg2,arg3);
-  *(double ***)&jresult = result; 
-  return jresult;
+  arg3 = (int)jarg3; 
+  print_net_exposure_values(arg1,arg2,arg3);
 }
 
 
-SWIGEXPORT void JNICALL Java_affiliationexposureJNI_calc_1affiliation_1exposure(JNIEnv *jenv, jclass jcls, jlong jarg1, jlong jarg2, jlong jarg3, jlong jarg4, jobject jarg4_) {
-  double **arg1 = (double **) 0 ;
-  double **arg2 = (double **) 0 ;
-  double **arg3 = (double **) 0 ;
-  struct ModeInfo *arg4 = (struct ModeInfo *) 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg4_;
-  arg1 = *(double ***)&jarg1; 
-  arg2 = *(double ***)&jarg2; 
-  arg3 = *(double ***)&jarg3; 
-  arg4 = *(struct ModeInfo **)&jarg4; 
-  calc_affiliation_exposure(arg1,arg2,arg3,arg4);
-}
-
-
-SWIGEXPORT void JNICALL Java_affiliationexposureJNI_print_1aff_1exposure_1values(JNIEnv *jenv, jclass jcls, jlong jarg1, jlong jarg2, jlong jarg3, jobject jarg3_) {
-  double **arg1 = (double **) 0 ;
-  double **arg2 = (double **) 0 ;
-  struct ModeInfo *arg3 = (struct ModeInfo *) 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg3_;
-  arg1 = *(double ***)&jarg1; 
-  arg2 = *(double ***)&jarg2; 
-  arg3 = *(struct ModeInfo **)&jarg3; 
-  print_aff_exposure_values(arg1,arg2,arg3);
-}
-
-
-SWIGEXPORT jlong JNICALL Java_affiliationexposureJNI_new_1intp(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jlong JNICALL Java_networkexposureJNI_new_1intp(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   int *result = 0 ;
   
@@ -548,7 +365,7 @@ SWIGEXPORT jlong JNICALL Java_affiliationexposureJNI_new_1intp(JNIEnv *jenv, jcl
 }
 
 
-SWIGEXPORT jlong JNICALL Java_affiliationexposureJNI_copy_1intp(JNIEnv *jenv, jclass jcls, jint jarg1) {
+SWIGEXPORT jlong JNICALL Java_networkexposureJNI_copy_1intp(JNIEnv *jenv, jclass jcls, jint jarg1) {
   jlong jresult = 0 ;
   int arg1 ;
   int *result = 0 ;
@@ -562,7 +379,7 @@ SWIGEXPORT jlong JNICALL Java_affiliationexposureJNI_copy_1intp(JNIEnv *jenv, jc
 }
 
 
-SWIGEXPORT void JNICALL Java_affiliationexposureJNI_delete_1intp(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_networkexposureJNI_delete_1intp(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   int *arg1 = (int *) 0 ;
   
   (void)jenv;
@@ -572,7 +389,7 @@ SWIGEXPORT void JNICALL Java_affiliationexposureJNI_delete_1intp(JNIEnv *jenv, j
 }
 
 
-SWIGEXPORT void JNICALL Java_affiliationexposureJNI_intp_1assign(JNIEnv *jenv, jclass jcls, jlong jarg1, jint jarg2) {
+SWIGEXPORT void JNICALL Java_networkexposureJNI_intp_1assign(JNIEnv *jenv, jclass jcls, jlong jarg1, jint jarg2) {
   int *arg1 = (int *) 0 ;
   int arg2 ;
   
@@ -584,7 +401,7 @@ SWIGEXPORT void JNICALL Java_affiliationexposureJNI_intp_1assign(JNIEnv *jenv, j
 }
 
 
-SWIGEXPORT jint JNICALL Java_affiliationexposureJNI_intp_1value(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT jint JNICALL Java_networkexposureJNI_intp_1value(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   jint jresult = 0 ;
   int *arg1 = (int *) 0 ;
   int result;
@@ -598,7 +415,7 @@ SWIGEXPORT jint JNICALL Java_affiliationexposureJNI_intp_1value(JNIEnv *jenv, jc
 }
 
 
-SWIGEXPORT jlong JNICALL Java_affiliationexposureJNI_double_1array(JNIEnv *jenv, jclass jcls, jint jarg1, jint jarg2) {
+SWIGEXPORT jlong JNICALL Java_networkexposureJNI_double_1array(JNIEnv *jenv, jclass jcls, jint jarg1, jint jarg2) {
   jlong jresult = 0 ;
   int arg1 ;
   int arg2 ;
@@ -614,7 +431,7 @@ SWIGEXPORT jlong JNICALL Java_affiliationexposureJNI_double_1array(JNIEnv *jenv,
 }
 
 
-SWIGEXPORT jlong JNICALL Java_affiliationexposureJNI_setitem(JNIEnv *jenv, jclass jcls, jlong jarg1, jint jarg2, jint jarg3, jint jarg4) {
+SWIGEXPORT jlong JNICALL Java_networkexposureJNI_setitem(JNIEnv *jenv, jclass jcls, jlong jarg1, jint jarg2, jint jarg3, jint jarg4) {
   jlong jresult = 0 ;
   double **arg1 = (double **) 0 ;
   int arg2 ;
@@ -630,20 +447,6 @@ SWIGEXPORT jlong JNICALL Java_affiliationexposureJNI_setitem(JNIEnv *jenv, jclas
   arg4 = (int)jarg4; 
   result = (void *)setitem(arg1,arg2,arg3,arg4);
   *(void **)&jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT jlong JNICALL Java_affiliationexposureJNI_int_1array(JNIEnv *jenv, jclass jcls, jint jarg1) {
-  jlong jresult = 0 ;
-  int arg1 ;
-  int *result = 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  arg1 = (int)jarg1; 
-  result = (int *)int_array(arg1);
-  *(int **)&jresult = result; 
   return jresult;
 }
 

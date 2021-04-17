@@ -43,4 +43,41 @@ public class affiliationexposure {
     affiliationexposureJNI.print_aff_exposure_values(SWIGTYPE_p_p_double.getCPtr(y_array), SWIGTYPE_p_p_double.getCPtr(e_array), ModeInfo.getCPtr(mode_data), mode_data);
   }
 
+  public static SWIGTYPE_p_int new_intp() {
+    long cPtr = affiliationexposureJNI.new_intp();
+    return (cPtr == 0) ? null : new SWIGTYPE_p_int(cPtr, false);
+  }
+
+  public static SWIGTYPE_p_int copy_intp(int value) {
+    long cPtr = affiliationexposureJNI.copy_intp(value);
+    return (cPtr == 0) ? null : new SWIGTYPE_p_int(cPtr, false);
+  }
+
+  public static void delete_intp(SWIGTYPE_p_int obj) {
+    affiliationexposureJNI.delete_intp(SWIGTYPE_p_int.getCPtr(obj));
+  }
+
+  public static void intp_assign(SWIGTYPE_p_int obj, int value) {
+    affiliationexposureJNI.intp_assign(SWIGTYPE_p_int.getCPtr(obj), value);
+  }
+
+  public static int intp_value(SWIGTYPE_p_int obj) {
+    return affiliationexposureJNI.intp_value(SWIGTYPE_p_int.getCPtr(obj));
+  }
+
+  public static SWIGTYPE_p_p_double double_array(int rows, int cols) {
+    long cPtr = affiliationexposureJNI.double_array(rows, cols);
+    return (cPtr == 0) ? null : new SWIGTYPE_p_p_double(cPtr, false);
+  }
+
+  public static SWIGTYPE_p_void setitem(SWIGTYPE_p_p_double array, int row, int col, int value) {
+    long cPtr = affiliationexposureJNI.setitem(SWIGTYPE_p_p_double.getCPtr(array), row, col, value);
+    return (cPtr == 0) ? null : new SWIGTYPE_p_void(cPtr, false);
+  }
+
+  public static SWIGTYPE_p_int int_array(int size) {
+    long cPtr = affiliationexposureJNI.int_array(size);
+    return (cPtr == 0) ? null : new SWIGTYPE_p_int(cPtr, false);
+  }
+
 }
